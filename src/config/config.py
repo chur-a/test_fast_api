@@ -1,0 +1,10 @@
+PROJECT_NAME: str = 'TestSearcher'
+VERSION: str = '1.0.0'
+
+POSTGRES_HOST = 'localhost'
+POSTGRES_PORT = '5432'
+POSTGRES_DB = 'test_fast_api'
+POSTGRES_USER = 'postgres'
+POSTGRES_PASSWORD = 'eu556t25'
+
+DATABASE_URL: str = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
