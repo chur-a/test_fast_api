@@ -1,4 +1,8 @@
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch("http://localhost:9200")
+from src.config import config
 
+es = Elasticsearch(config.ELASTICSEARCH_URL)
+
+if not es.indices.exists(index='documents'):
+    es.indices.create(index='documents')
