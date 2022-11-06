@@ -2,7 +2,5 @@ from elasticsearch import Elasticsearch
 
 from src.config import config
 
-es = Elasticsearch(config.ELASTICSEARCH_URL)
 
-if not es.indices.exists(index='documents'):
-    es.indices.create(index='documents')
+es = Elasticsearch(config.ELASTICSEARCH_URL, ca_certs=config.ELASTICSEARCH_PATH_TO_CERTIFICATE, request_timeout=40)
