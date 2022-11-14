@@ -21,8 +21,12 @@ You need to configure connections to database and search engine. To do that, use
 ```
 src/config/config.py
 ```
+Also, you can setup your database using migrations. To do this configure **alembic.ini** file, setup sqlalchemy.url there to your database. After that run this command in your console. Make sure you're in project directory.
+```
+alembic upgrade head
+```
 
-You can try this engine with example dataset.csv file. Or you can add your dataset, make sure that he has .csv format and dataset.csv name.
+You can try this engine with example dataset.csv file. Or you can add your dataset, make sure that she has .csv format and dataset.csv name.
 To do that run this in console.
 ```
 python3 dataset_download.py
