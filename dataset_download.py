@@ -8,27 +8,6 @@ from src.elasticsearch.index import es
 from src.config import config
 
 
-def database_creation():
-    with engine.connect() as conn:
-        stmt = text('DROP TABLE IF EXISTS documents')
-        conn.execute(stmt)
-        stmt = text('CREATE TABLE documents ('
-                    'id int PRIMARY KEY,'
-                    'rubrics varchar,'
-                    'text_ varchar,'
-                    'created_date timestamp)')
-        conn.execute(stmt)
-    mapping = {
-        "mappings": {
-            "properties": {
-                'text': {'type': 'text'}
-            }
-        }
-    }
-    es.indices.delete(index=config.ELASTICSEARCH_NAME_OF_INDEX)
-    es.indices.create(index=config.ELASTICSEARCH_NAME_OF_INDEX, body=mapping)
-
-
 def download_dataset():
     with open('././dataset.csv', 'r', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
@@ -45,6 +24,5 @@ def download_dataset():
 
 
 if __name__ == '__main__':
-    database_creation()
     if os.path.exists('dataset.csv'):
         download_dataset()
